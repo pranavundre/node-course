@@ -1,0 +1,41 @@
+ db.collection("users").insertOne(
+   {
+     name: "Pranav",
+     age: 19,
+   },
+   (error, result) => {
+     if (error) {
+       return console.log("Unable to insert data.");
+     }
+     return result.ops;
+     // console.log(result.ops);
+   }
+ );
+
+ db.collection("users").insertMany(
+   [
+     { name: "Ishan", age: 17 },
+     { name: "Juan", age: 23 },
+   ],
+   (error, insertOneResult) => {
+     if (error) {
+       return console.log("Unable to insert data.");
+     }
+     console.log(insertOneResult.insertedId);
+   }
+ );
+
+ db.collection("tasks").insertMany(
+   [
+     { description: "Learn Node JS", completed: true },
+     { description: "Learn React Native", completed: false },
+     { description: "Learn Next JS", completed: false },
+   ],
+   (error, result) => {
+     if (error) {
+       return console.log("Unable to add tasks.");
+     }
+
+     console.log("Added tasks.");
+   }
+ );

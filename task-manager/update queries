@@ -1,0 +1,93 @@
+const updatePromise = db.collection("users").updateOne(
+      {
+        _id: new ObjectId("61f9b5d61879f2309aa81dcc"),
+      },
+      {
+        $set: {
+          name: "Nitish",
+        },
+      }
+    );
+
+    updatePromise
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    db.collection("users")
+      .updateOne(
+        {
+          _id: new ObjectId("61f9b5d61879f2309aa81dcc"),
+        },
+        {
+          //   $set: {
+          //     name: "Nitish",
+          //   },
+          $inc: {
+            age: 1,
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    //updateMany
+
+    db.collection("users")
+      .updateMany(
+        {
+          _id: new ObjectId("61f6d3375380bc76345575c0"),
+        },
+        {
+          $set: {
+            name: "Xuan", //Juan –> Xuan
+          },
+          $inc: {
+            age: 1, //age(+1) i.e. 23 –> 24
+          },
+        }
+
+        // DOUBT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // {
+        //   {
+        //     _id: new ObjectId("61f9b5d61879f2309aa81dcd"),
+        //   },
+        //   {
+        //     $set: {
+        //       name: "Johnny", //Jonny –> Johnny
+        //     },
+        //     $inc: {
+        //       age: 1, //age(+1) i.e. 26 –> 27
+        //     },
+        //   },
+        // }
+
+      )
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    db.collection("tasks")
+      .updateMany({ completed: false }, { $set: { completed: true } })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });

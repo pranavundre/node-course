@@ -1,0 +1,35 @@
+db.collection("users").findOne(
+      {
+        _id: ObjectId("61f6d3375380bc76345575bf"),
+      },
+      (error, user) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log(user);
+      }
+    );
+
+    db.collection("users")
+    .find({
+      age: { $gt: 20 },
+    })
+    .toArray((error, users) => {
+      if (error) {
+        return console.log(error);
+      }
+
+      console.log(users);
+    });
+
+    db.collection("tasks")
+      .find({
+        completed: false,
+      })
+      .toArray((error, tasks) => {
+        if (error) {
+          return console.log(error);
+        }
+
+        console.log(tasks);
+      });
